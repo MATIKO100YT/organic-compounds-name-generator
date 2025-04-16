@@ -19,9 +19,9 @@ git clone https://github.com/MATIKO100YT/organic-compound-name-generator.git
 ```bash
 cd organic-compound-name-generator
 ```
-- zainstaluj [Pyinstallera](https://github.com/pyinstaller/pyinstaller) z repo lub przez ```bash pip install pyinstaller ```
-- wywołaj ```bash pyinstaller --name "Generator nazw związków organicznych" --noconsole --onefile organicNameGeneratorGUI.py ```
-- wygenerowany ```bash .exe ``` znajdziesz w ```bash dist/ ```
+- zainstaluj [Pyinstallera](https://github.com/pyinstaller/pyinstaller) z repo lub przez ``` pip install pyinstaller ```
+- wywołaj ``` pyinstaller --name "Generator nazw związków organicznych" --noconsole --onefile organicNameGeneratorGUI.py ```
+- wygenerowany ``` .exe ``` znajdziesz w ``` dist/ ```
 
 ## Dodatkowe zasoby
 - dokumentacja [Pyinstallera](https://pyinstaller.org/en/stable/)
