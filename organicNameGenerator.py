@@ -1,7 +1,7 @@
 # ------------------------------------
 # Copyright (c) 2025 Mateusz Celiński
 # Licenced under the MIT license
-# See LICENCE.txt for details
+# See LICENSE.txt for details
 # ------------------------------------
 
 # Funkcja generująca prefiks nazwy związku organicznego
