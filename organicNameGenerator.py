@@ -1,6 +1,6 @@
 # ------------------------------------
 # Copyright (c) 2025 Mateusz Celiński
-# Licenced under the MIT license
+# Licensed under the MIT license
 # See LICENSE.txt for details
 # ------------------------------------
 
