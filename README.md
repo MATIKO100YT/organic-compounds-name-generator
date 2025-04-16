@@ -1,5 +1,5 @@
 # Generator nazw związków organicznych
-###### <i>Note: only for people speaking in Polish (for now)<i>
+###### <i>Note: for Polish speakers only (for now)<i>
 
 Jest to prosty generator nazw związków organicznych zgodny z zasadami IUPAC (Międzynarodowej Unii Chemii Czystej i Stosowanej).
 
