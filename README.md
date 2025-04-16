@@ -1,9 +1,9 @@
 # Generator nazw związków organicznych
 ###### <i>Note: for Polish speakers only<i>
 
-![screenshot](screenshot1.png)
+<img src="img/screenshot1.png" width="65%">
 
-Jest to prosty generator nazw związków organicznych zgodny z zasadami IUPAC (Międzynarodowej Unii Chemii Czystej i Stosowanej).
+Jest to prosty generator nazw związków organicznych zgodny z zasadami [IUPAC](https://iupac.org).
 
 ## Obsługiwane typy związków to:
 - alkany
