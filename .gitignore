@@ -175,3 +175,6 @@ cython_debug/
 
 # executable files
 *.exe
+
+# other files/folders
+img/
