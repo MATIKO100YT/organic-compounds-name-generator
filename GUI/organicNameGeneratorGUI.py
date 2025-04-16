@@ -7,6 +7,7 @@
 import tkinter as tk
 from tkinter import ttk, messagebox
 
+# Zwraca przedrostek nazwy węglowodoru na podstawie liczby atomów węgla
 def generatePrefix(carbonCount):
     specificNames = {
         1: "met", 2: "et", 3: "prop", 4: "but", 5: "pent", 6: "heks", 7: "hept", 8: "okt", 9: "non", 10: "dek",
@@ -14,6 +15,7 @@ def generatePrefix(carbonCount):
     }
     return specificNames.get(carbonCount, "")
 
+# Oblicza liczbę atomów wodoru dla danego związku (alkanu, alkenu lub alkinu)
 def calculateHydrogens(carbonCount, doubleBond, tripleBond):
     baseHydrogens = 2 * carbonCount + 2
     if doubleBond:
@@ -22,6 +24,7 @@ def calculateHydrogens(carbonCount, doubleBond, tripleBond):
         baseHydrogens -= 4
     return baseHydrogens
 
+# Tworzy ciąg znaków reprezentujący podstawniki i ich pozycje w nazwie
 def generateSubstituentString(substituents):
     substituentCounts = {}
     for position, type_ in substituents:
@@ -50,6 +53,7 @@ def generateSubstituentString(substituents):
 
     return "-".join(substituentStrings)
 
+# Generuje pełną nazwę związku IUPAC na podstawie liczby atomów węgla, typu, wiązań i podstawników
 def generateIUPACName(carbonCount, compoundType, doubleBond, tripleBond, substituents):
     baseName = generatePrefix(carbonCount)
 
@@ -66,6 +70,7 @@ def generateIUPACName(carbonCount, compoundType, doubleBond, tripleBond, substit
 
     return baseName
 
+# Oblicza wzór sumaryczny związku, uwzględniając podstawniki
 def calculateMolecularFormula(carbonCount, substituents):
     hydrogenCount = 2 * carbonCount + 2
     elementCounts = {"C": carbonCount, "H": hydrogenCount}
@@ -74,7 +79,7 @@ def calculateMolecularFormula(carbonCount, substituents):
         if substituent == "CH3":
             elementCounts["C"] += 1
             elementCounts["H"] += 3
-            elementCounts["H"] -= 1
+            elementCounts["H"] -= 1  # podstawnik zajmuje 1 H
         elif substituent == "C2H5":
             elementCounts["C"] += 2
             elementCounts["H"] += 5
@@ -92,6 +97,7 @@ def calculateMolecularFormula(carbonCount, substituents):
 
     return "".join(formulaParts)
 
+# Aktualizuje widoczne pola do wprowadzania pozycji wiązań w zależności od typu związku
 def updateBondEntries(event):
     compoundType = compoundTypeVar.get()
     if compoundType == "alken":
@@ -104,6 +110,7 @@ def updateBondEntries(event):
         doubleBondFrame.grid_remove()
         tripleBondFrame.grid_remove()
 
+# Generuje nazwę i wzór związku na podstawie danych wprowadzonych przez użytkownika
 def generate():
     try:
         carbonCount = int(carbonEntry.get())
@@ -126,6 +133,7 @@ def generate():
     except Exception as e:
         messagebox.showerror("Błąd", str(e))
 
+# Dodaje podstawniki do listy i odświeża widok
 def addSubstituent():
     position = substituentPositionEntry.get()
     substituent = substituentTypeVar.get()
@@ -135,11 +143,13 @@ def addSubstituent():
     else:
         messagebox.showerror("Błąd", "Podaj poprawną pozycję i typ podstawnika.")
 
+# Usuwa podstawniki z listy
 def removeSubstituent(index):
     if 0 <= index < len(substituentData):
         del substituentData[index]
         refreshSubstituentDisplay()
 
+# Odświeża wyświetlanie listy podstawników w GUI
 def refreshSubstituentDisplay():
     for widget in substituentDisplayFrame.winfo_children():
         widget.destroy()
@@ -148,13 +158,15 @@ def refreshSubstituentDisplay():
         tk.Label(substituentDisplayFrame, text=f"{pos}: {sub}", bg="#f0f8ff", anchor="w").grid(row=i, column=0, sticky="w")
         tk.Button(substituentDisplayFrame, text="-", command=lambda idx=i: removeSubstituent(idx), bg="#ffb6b9", relief="flat", width=2).grid(row=i, column=1, sticky="e")
 
+# Inicjalizacja GUI
 root = tk.Tk()
 root.title("Generator nazw związków organicznych")
 root.configure(bg="#f7f9fc")
 root.geometry("550x600")
 
-substituentData = []
+substituentData = []  # Przechowuje dane o podstawnikach
 
+# Interfejs użytkownika – etykiety, pola i przyciski
 tk.Label(root, text="Liczba atomów węgla (1-20):", bg="#f7f9fc", anchor="w").grid(row=0, column=0, sticky="w")
 carbonEntry = tk.Entry(root, bg="#f0f8ff", relief="flat")
 carbonEntry.grid(row=0, column=1, sticky="we")
@@ -165,6 +177,7 @@ compoundTypeMenu = ttk.Combobox(root, textvariable=compoundTypeVar, values=["alk
 compoundTypeMenu.grid(row=1, column=1, sticky="we")
 compoundTypeMenu.bind("<<ComboboxSelected>>", updateBondEntries)
 
+# Pola do wprowadzania pozycji wiązań
 doubleBondFrame = tk.Frame(root, bg="#f7f9fc")
 tk.Label(doubleBondFrame, text="Pozycja wiązania podwójnego:", bg="#f7f9fc", anchor="w").grid(row=0, column=0, sticky="w")
 doubleBondEntry = tk.Entry(doubleBondFrame, bg="#f0f8ff", relief="flat")
@@ -175,6 +188,7 @@ tk.Label(tripleBondFrame, text="Pozycja wiązania potrójnego:", bg="#f7f9fc", a
 tripleBondEntry = tk.Entry(tripleBondFrame, bg="#f0f8ff", relief="flat")
 tripleBondEntry.grid(row=0, column=1, sticky="we")
 
+# Sekcja do dodawania podstawników
 tk.Label(root, text="Dodaj podstawniki (pozycja i typ):", bg="#f7f9fc", anchor="w").grid(row=4, column=0, columnspan=2, sticky="w")
 substituentPositionEntry = tk.Entry(root, bg="#f0f8ff", relief="flat")
 substituentPositionEntry.grid(row=5, column=0, sticky="we")
@@ -187,6 +201,7 @@ tk.Button(root, text="Dodaj +", command=addSubstituent, bg="#c6f1d6", relief="fl
 substituentDisplayFrame = tk.Frame(root, bg="#f7f9fc")
 substituentDisplayFrame.grid(row=6, column=0, columnspan=3, sticky="we")
 
+# Pola wynikowe: nazwa i wzór sumaryczny
 resultName = tk.StringVar()
 resultFormula = tk.StringVar()
 
@@ -198,6 +213,7 @@ tk.Label(root, text="Wzór sumaryczny:", bg="#f7f9fc", anchor="w").grid(row=8, c
 resultFormulaLabel = tk.Label(root, textvariable=resultFormula, bg="#ffffff", relief="flat", anchor="w")
 resultFormulaLabel.grid(row=8, column=1, columnspan=2, sticky="we")
 
+# Przyciski: generowanie oraz zamknięcie aplikacji
 tk.Button(root, text="Generuj", command=generate, bg="#b5e3f3", relief="flat").grid(row=9, column=0, sticky="we")
 tk.Button(root, text="Zamknij", command=root.quit, bg="#f7d1cd", relief="flat").grid(row=9, column=2, sticky="we")
 
