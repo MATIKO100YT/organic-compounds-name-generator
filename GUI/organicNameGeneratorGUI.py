@@ -1,18 +1,18 @@
-------------------------------------
+# ------------------------------------
+# Copyright (c) 2025 Mateusz Celiński
+# Licensed under the MIT license
+# See LICENSE.txt for details
+# ------------------------------------
 
-Copyright (c) 2025 Mateusz Celiński
+import tkinter as tk from tkinter 
+import ttk, messagebox
 
-Licensed under the MIT license
 
-See LICENSE.txt for details
-
-------------------------------------
-
-import tkinter as tk from tkinter import ttk, messagebox
-
-Funkcja generująca prefiks nazwy związku organicznego
-
-def generatePrefix(carbonCount): # słownik z prefiksami dla danej liczby atomów węgla specificNames = { 1: "met", 2: "et", 3: "prop", 4: "but", 5: "pent", 6: "heks", 7: "hept", 8: "okt", 9: "non", 10: "dek", 11: "undek", 12: "dodek", 13: "tridek", 14: "tetradek", 15: "pentadek", 16: "heksadek", 17: "heptadek", 18: "oktadek", 19: "nonadek", 20: "ikoz" } return specificNames.get(carbonCount, "")
+# Funkcja generująca prefiks nazwy związku organicznego
+def generatePrefix(carbonCount):
+  # słownik z prefiksami
+  specificNames = { 1: "met", 2: "et", 3: "prop", 4: "but", 5: "pent", 6: "heks", 7: "hept", 8: "okt", 9: "non", 10: "dek", 11: "undek", 12: "dodek", 13: "tridek", 14: "tetradek", 15: "pentadek", 16: "heksadek", 17: "heptadek", 18: "oktadek", 19: "nonadek", 20: "ikoz" } 
+  return specificNames.get(carbonCount, "")
 
 Funkcja zliczająca ilość atomów wodoru na podstawie obecności w. podwójnych i potrójnych
 
