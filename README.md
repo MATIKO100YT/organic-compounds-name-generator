@@ -1,7 +1,7 @@
 # Generator nazw związków organicznych
 ###### <i>Note: for Polish speakers only<i>
 
-<img src="img/screenshot1.png" width="65%">
+<img src="img/screenshot1.png" width="75%">
 
 Jest to prosty generator nazw związków organicznych zgodny z zasadami [IUPAC](https://iupac.org).
 
