@@ -25,3 +25,9 @@ cd organic-compound-name-generator
 
 ## Dodatkowe zasoby
 - dokumentacja [Pyinstallera](https://pyinstaller.org/en/stable/)
+
+## Licencja
+
+Ten projekt jest dostępny na mocy licencji MIT - zobacz plik [LICENSE](LICENSE) po szczegóły.
+
+Copyright (c) 2025 Mateusz Celiński
