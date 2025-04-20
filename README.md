@@ -1,5 +1,5 @@
 # Organic Compounds Name Generator
-###### <i>Note: App itself and generated name are in Polish only, but I'm open to any contributors who want to help in translation<i>
+###### <i>Note: App itself and generated name are in Polish only, but I'm open to any contributors who want to help in translation</i>
 
 <img src="img/screenshot1.png" width="85%">
 
