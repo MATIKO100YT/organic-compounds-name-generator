@@ -6,7 +6,7 @@
 ## About
 This is a simple name generator for organic compounds based on [IUPAC](https://iupac.org) rules.
 
-## Available compounds type:
+## Available compounds types:
 - alkanes
 - alkenes
 - alkynes
