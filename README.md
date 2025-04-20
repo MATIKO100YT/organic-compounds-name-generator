@@ -1,35 +1,36 @@
-# Generator nazw związków organicznych
-###### <i>Note: for Polish speakers only<i>
+# Organic Compounds Name Generator
+###### <i>Note: App itself and generated name are in Polish only, but I'm open to any contributors who want to help in translation<i>
 
 <img src="img/screenshot1.png" width="75%">
 
-Jest to prosty generator nazw związków organicznych zgodny z zasadami [IUPAC](https://iupac.org).
+## About
+This is a simple name generator for organic compounds based on [IUPAC](https://iupac.org) rules.
 
-## Obsługiwane typy związków to:
-- alkany
-- alkeny
-- alkiny
+## Available compounds type:
+- alkanes
+- alkenes
+- alkynes
 
-## Jak zbudować?
-Jeśli nie chcesz korzystać z gotowego pliku .exe, możesz sam zbudować cały projekt.
-### Krok po kroku jak to zrobić
-- sklonuj całe repo
+## How to build?
+If you don't want to download .exe file available in "Release" page, you can build it yourself.
+### Step-by-step guide
+- clone this repo
 ```bash
-git clone https://github.com/MATIKO100YT/organic-compound-name-generator.git
+git clone https://github.com/MATIKO100YT/organic-compounds-name-generator.git
 ```
-- przejdź do repo
+- go to repo
 ```bash
-cd organic-compound-name-generator
+cd organic-compounds-name-generator
 ```
-- zainstaluj [Pyinstallera](https://github.com/pyinstaller/pyinstaller) z repo lub przez ``` pip install pyinstaller ```
-- wywołaj ``` pyinstaller --name "Generator nazw związków organicznych" --noconsole --onefile organicNameGeneratorGUI.py ```
-- wygenerowany ``` .exe ``` znajdziesz w ``` dist/ ```
+- install [Pyinstaller](https://github.com/pyinstaller/pyinstaller) via repo or by ``` pip install pyinstaller ```
+- run ``` pyinstaller --name "Generator nazw związków organicznych" --noconsole --onefile organicNameGeneratorGUI.py ```
+- you can find generated ``` .exe ``` in ``` dist/ ```
 
-## Dodatkowe zasoby
-- dokumentacja [Pyinstallera](https://pyinstaller.org/en/stable/)
+## Additional resources
+- [Pyinstaller](https://pyinstaller.org/en/stable/) doc
 
-## Licencja
+## License
 
-Ten projekt jest dostępny na mocy licencji MIT - zobacz plik [LICENSE](LICENSE) po szczegóły.
+This project is available under the MIT license - see [LICENSE](LICENSE) for details.
 
 Copyright (c) 2025 Mateusz Celiński
