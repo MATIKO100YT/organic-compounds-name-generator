@@ -1,7 +1,7 @@
 # Organic Compounds Name Generator
 ###### <i>Note: App itself and generated name are in Polish only, but I'm open to any contributors who want to help in translation<i>
 
-<img src="img/screenshot1.png" width="75%">
+<img src="img/screenshot1.png" width="85%">
 
 ## About
 This is a simple name generator for organic compounds based on [IUPAC](https://iupac.org) rules.
@@ -12,7 +12,7 @@ This is a simple name generator for organic compounds based on [IUPAC](https://i
 - alkynes
 
 ## How to build?
-If you don't want to download .exe file available in "Release" page, you can build it yourself.
+If you don't want to download ``` .exe ``` file available in "Release" page, you can build it yourself.
 ### Step-by-step guide
 - clone this repo
 ```bash
