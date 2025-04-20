@@ -27,7 +27,7 @@ cd organic-compounds-name-generator
 - you can find generated ``` .exe ``` in ``` dist/ ```
 
 ## Additional resources
-- [Pyinstaller](https://pyinstaller.org/en/stable/) doc
+- [Pyinstaller](https://pyinstaller.org/en/stable/) documentation
 
 ## License
 
