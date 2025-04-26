@@ -4,22 +4,23 @@
 # See LICENSE.txt for details
 # ------------------------------------
 
-# Funkcja generująca prefiks nazwy związku organicznego
-# Argumentem jest ilość atomów węgla w związku
-# Zwraca prefiks dla konkretnej liczby atomów
+# Function that generates the prefix of the organic compound name
+# Argument: number of carbon atoms in the compound
+# Returns the prefix for a specific number of carbon atoms
 def generatePrefix(carbonCount):
-	# słownik z prefiksami
+    # dictionary with prefixes
     specificNames = {
-    	1: "met", 2: "et", 3: "prop", 4: "but", 5: "pent", 6: "heks", 7: "hept", 8: "okt", 9: "non", 10: "dek", 11: "undek", 12: "dodek", 13: "tridek", 14: "tetradek", 15: "pentadek", 16: "heksadek", 17: "heptadek", 18: "oktadek", 19: "nonadek", 20: "ikoz"
-    	}
+        1: "met", 2: "et", 3: "prop", 4: "but", 5: "pent", 6: "heks", 7: "hept", 8: "okt", 9: "non", 10: "dek", 11: "undek", 12: "dodek", 13: "tridek", 14: "tetradek", 15: "pentadek", 16: "heksadek", 17: "heptadek", 18: "oktadek", 19: "nonadek", 20: "ikoz"
+    }
     if carbonCount in specificNames:
         return specificNames[carbonCount]
     else:
-        raise ValueError("Liczba atomów węgla musi być w przedziale 1-20.")
+        raise ValueError("Number of carbon atoms must be between 1 and 20.")
 
-# Funkcja zliczająca ilość atomów wodoru
-# Argumentami są ilość atomów węgla i pozycja wiązania podwójnego/potrójnego (znaczenie ma sam fakt obecności wiązania (jeśli nie ma = None) a nie pozycja)
-# Zwraca ilość atomów wodoru
+# Function that calculates the number of hydrogen atoms
+# Arguments: number of carbon atoms and the position of a double/triple bond 
+# (only the presence of the bond matters — if none, pass None)
+# Returns the number of hydrogen atoms
 def calculateHydrogens(carbonCount, doubleBond, tripleBond):
     baseHydrogens = 2 * carbonCount + 2
     if doubleBond:
@@ -28,12 +29,12 @@ def calculateHydrogens(carbonCount, doubleBond, tripleBond):
         baseHydrogens -= 4
     return baseHydrogens
 
-# Funkcja generująca prefiks dla podstawników
-# Argumentem jest lista podstawników
-# Zwraca wygenerowany prefiks
+# Function that generates the prefix for substituents
+# Argument: list of substituents
+# Returns the generated prefix
 def generateSubstituentString(substituents):
     substituentCounts = {}
-    # Pętla sorawdzająca pozycję każdego podstawnika
+    # Loop checking the position of each substituent
     for position, type_ in substituents:
         if type_ not in substituentCounts:
             substituentCounts[type_] = []
@@ -49,7 +50,7 @@ def generateSubstituentString(substituents):
     }
 
     substituentStrings = []
-    # Pętla generująca odpowiednie prefiksy dla podstawników z uwzględnieniem ich pozycji i ilości
+    # Loop generating appropriate prefixes for substituents considering their position and quantity
     for type_, positions in sorted(substituentCounts.items(), key=lambda x: substituentOrder.get(x[0], x[0])):
         count = len(positions)
         positionsStr = ",".join(map(str, sorted(positions)))
@@ -61,9 +62,9 @@ def generateSubstituentString(substituents):
 
     return "-".join(substituentStrings)
 
-# Funkcja generująca pełną nazwę związku organicznego według zasad IUPAC
-# Argumentami są: ilość węgli, typ związku, pozycja wiązania podwójnego/potrójnego oraz lista podstawników
-# Zwraca wygenerowaną mazwę
+# Function that generates the full name of an organic compound according to IUPAC rules
+# Arguments: number of carbon atoms, type of compound, position of double/triple bond, and list of substituents
+# Returns the generated name
 def generateIUPACName(carbonCount, compoundType, doubleBond, tripleBond, substituents):
     baseName = generatePrefix(carbonCount)
 
@@ -80,9 +81,9 @@ def generateIUPACName(carbonCount, compoundType, doubleBond, tripleBond, substit
 
     return baseName
 
-# Funkcja generująca wzór sumaryczny związku
-# Argumentami są ilość węgli i lista podstawników
-# Zwraca wzór sumaryczny
+# Function that calculates the molecular formula of the compound
+# Arguments: number of carbon atoms and list of substituents
+# Returns the molecular formula
 def calculateMolecularFormula(carbonCount, substituents):
     hydrogenCount = 2 * carbonCount + 2
     elementCounts = {"C": carbonCount, "H": hydrogenCount}
@@ -110,69 +111,68 @@ def calculateMolecularFormula(carbonCount, substituents):
     return "".join(formulaParts)
 
 def main():
-	# Lista dostępnych podstawników
+    # List of available substituents
     substituentsList = ["CH3", "C2H5", "Cl", "Br", "F", "NO2"]
 
-    print("=== Generator nazw związków organicznych ===")
+    print("=== Organic Compounds Name Generator ===")
 
     while True:
         try:
             print("\nMenu:")
-            print("1 - Wygeneruj nazwę związku")
-            print("2 - Wyjście")
-            menuChoice = input("Wybierz opcję: ")
+            print("1 - Generate compound name")
+            print("2 - Exit")
+            menuChoice = input("Choose an option: ")
 
             if menuChoice == "2":
-                print("Zakończono działanie programu.")
+                print("Program terminated.")
                 break
 
             if menuChoice != "1":
-                print("Nieprawidłowy wybór.")
+                print("Invalid choice.")
                 continue
 
-            carbonCount = int(input("Podaj liczbę atomów węgla (1-20): "))
+            carbonCount = int(input("Enter the number of carbon atoms (1-20): "))
             if carbonCount < 1 or carbonCount > 20:
-                raise ValueError("Liczba atomów węgla musi być w przedziale 1-20.")
+                raise ValueError("Number of carbon atoms must be between 1 and 20.")
 
-            print("Typ związku:")
-            print("1 - Alkan")
-            print("2 - Alken")
-            print("3 - Alkin")
-            compoundType = input("Wybierz typ związku: ")
+            print("Type of compound:")
+            print("1 - Alkane")
+            print("2 - Alkene")
+            print("3 - Alkyne")
+            compoundType = input("Choose the type of compound: ")
 
             doubleBond = None
             tripleBond = None
             if compoundType == "2":
                 compoundType = "alken"
-                doubleBond = int(input("Podaj pozycję wiązania podwójnego: "))
+                doubleBond = int(input("Enter the position of the double bond: "))
             elif compoundType == "3":
                 compoundType = "alkin"
-                tripleBond = int(input("Podaj pozycję wiązania potrójnego: "))
+                tripleBond = int(input("Enter the position of the triple bond: "))
             else:
                 compoundType = "alkan"
 
             substituents = []
-            print(f"Dostępne podstawniki: {', '.join(substituentsList)}")
-            print("Dodawanie podstawników (wpisz 'stop', aby zakończyć):")
+            print(f"Available substituents: {', '.join(substituentsList)}")
+            print("Adding substituents (type 'stop' to finish):")
             while True:
-                position = input("Podaj pozycję podstawnika: ")
+                position = input("Enter the position of the substituent: ")
                 if position.lower() == "stop":
                     break
-                substituent = input("Podaj typ podstawnika: ")
+                substituent = input("Enter the type of substituent: ")
                 if substituent in substituentsList:
                     substituents.append((int(position), substituent))
                 else:
-                    print("Nieprawidłowy typ podstawnika.")
+                    print("Invalid substituent type.")
 
             iupacName = generateIUPACName(carbonCount, compoundType, doubleBond, tripleBond, substituents)
             molecularFormula = calculateMolecularFormula(carbonCount, substituents)
 
-            print(f"Nazwa: {iupacName}")
-            print(f"Wzór sumaryczny: {molecularFormula}")
+            print(f"Name: {iupacName}")
+            print(f"Molecular formula: {molecularFormula}")
 
         except Exception as e:
-            print(f"Błąd: {e}")
+            print(f"Error: {e}")
 
 if __name__ == "__main__":
     main()
-
