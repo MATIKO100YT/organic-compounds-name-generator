@@ -11,7 +11,7 @@ This is a simple name generator for organic compounds based on [IUPAC](https://i
 - alkenes
 - alkynes
 
-## How to build?
+## How to build
 If you don't want to download ``` .exe ``` file available in "Release" page, you can build it yourself.
 ### Step-by-step guide
 - clone this repo
